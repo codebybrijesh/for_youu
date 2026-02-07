@@ -30,7 +30,7 @@
         }
 
         #container {
-            background: rgba(255, 255, 255, 0.95); /* High opacity for readability */
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(5px);
             padding: 40px;
             border-radius: 30px;
@@ -40,6 +40,16 @@
             z-index: 10;
             position: relative;
             transition: all 0.5s ease;
+
+            /* --- ADD THESE 3 LINES --- */
+            max-height: 80vh;       /* Stop it from getting taller than 80% of screen */
+            overflow-y: auto;       /* Turn on scrolling inside the card */
+            scrollbar-width: none;  /* Hide the scrollbar (for Firefox) */
+        }
+
+        /* --- ADD THIS TO HIDE SCROLLBARS ON CHROME/PHONES --- */
+        #container::-webkit-scrollbar { 
+            display: none; 
         }
 
         .step { display: none; animation: fadeIn 1s ease-in-out; }
