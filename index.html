@@ -15,7 +15,7 @@
             overflow: hidden;
             text-align: center;
             
-            /* --- FIXED BACKGROUND --- */
+            /* bg */
             background: url('step3_bg.jpg') no-repeat center center fixed;
             background-size: cover; 
         }
@@ -158,6 +158,63 @@
             animation: blink-cursor 1s infinite;
             white-space: pre-wrap;
         }
+        /* Enhanced Memory Gallery */
+.memory-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory; /* Makes cards snap into view */
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.memory-card {
+    min-width: 260px;
+    background: white;
+    padding: 12px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    scroll-snap-align: center;
+    transform: rotate(calc(var(--r, 0deg))); /* Adds a slight random tilt */
+    transition: transform 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.memory-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.caption {
+    font-family: 'Georgia', serif;
+    font-size: 0.95em;
+    color: #555;
+    font-style: italic;
+    line-height: 1.4;
+    padding: 0 5px;
+}
+
+/* Indicators to show there's more to scroll */
+.scroll-hint {
+    font-size: 0.8em;
+    color: #ff4d6d;
+    margin-top: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+    40% {transform: translateX(-5px);}
+    60% {transform: translateX(5px);}
+}
 
         @keyframes blink-cursor {
             0%, 50% { border-right-color: #4a2c0b; }
@@ -257,24 +314,63 @@ All I ask is this — say Yes, and let me show you one last surprise."></span>
         </div>
 
         <div id="step4" class="step">
-            <h2>Moments We Shared</h2>
-            <p>Our chats, our calls, and these memories...</p>
-            <div class="timeline">
-                <div class="timeline-item"><img src="photo1.jpg" alt="Memory 1"></div>
-                <div class="timeline-item"><img src="photo2.jpg" alt="Memory 2"></div>
-                <div class="timeline-item"><img src="photo3.jpg" alt="Memory 3"></div>
+            <h2>Moments We Shared ✨</h2>
+            <p>Every small memory with you is a big deal to me.</p>
+    
+            <div class="memory-gallery">
+                <div class="memory-card" style="--r: -2deg;">
+                    <img src="photo1.jpg" alt="The Wedding">
+                    <div class="caption">The very first time I saw you at the wedding. That smile... it changed everything.</div>
+                </div>
+
+                <div class="memory-card" style="--r: 3deg;">
+                    <img src="photo2.jpg" alt="Jaipur Wish">
+                    <div class="caption">When I was in Jaipur and really wished you were there next to me.</div>
+                </div>
+
+                <div class="memory-card" style="--r: -1deg;">
+                    <img src="photo3.jpg" alt="The Chat">
+                    <div class="caption">One of those late-night talks where I realized you were becoming special.</div>
+                </div>
+
+                <div class="memory-card" style="--r: 2deg;">
+                    <img src="photo4.jpg" alt="Memory 4">
+                    <div class="caption">Even the simplest messages from you make my day so much better.</div>
+                </div>
+
+                <div class="memory-card" style="--r: -3deg;">
+                    <img src="photo5.jpg" alt="Memory 5">
+                    <div class="caption">I love how you express your thoughts; it makes me admire you more.</div>
+                </div>
+
+                <div class="memory-card" style="--r: 1deg;">
+                    <img src="photo6.jpg" alt="Memory 6">
+                    <div class="caption">Listening to the songs you recommend feels like a warm hug.</div>
+                </div>
+
+                <div class="memory-card" style="--r: -2deg;">
+                    <img src="photo7.jpg" alt="Memory 7">
+                    <div class="caption">Thinking about our future meetings keeps me going through college.</div>
+                </div>
+
+                <div class="memory-card" style="--r: 4deg;">
+                    <img src="photo8.jpg" alt="Memory 8">
+                    <div class="caption">And here we are... ready for the next chapter?</div>
+                </div>
             </div>
+
+            <div class="scroll-hint">Swipe to see more →</div>
             <button class="btn-next" onclick="nextStep(5)">One more thing...</button>
         </div>
 
-        <div id="step5" class="step">
-            <h2>The Big Question</h2>
-            <p>I want to upgrade our "connection" to the next version. Would you give this 1st-year student the honor of being someone more than just friends?</p>
-            <div class="game-container">
-                <button id="yesBtn" onclick="celebrate()">YES! ❤️</button>
-                <button id="noBtn" onmouseover="moveNo()">No</button>
+            <div id="step5" class="step">
+                <h2>The Big Question</h2>
+                <p>I want to upgrade our "connection" to the next version. Would you give this 1st-year student the honor of being someone more than just friends?</p>
+                <div class="game-container">
+                    <button id="yesBtn" onclick="celebrate()">YES! ❤️</button>
+                    <button id="noBtn" onmouseover="moveNo()">No</button>
+                </div>
             </div>
-        </div>
 
         <div id="step6" class="step">
             <div class="bouquet">💐</div>
